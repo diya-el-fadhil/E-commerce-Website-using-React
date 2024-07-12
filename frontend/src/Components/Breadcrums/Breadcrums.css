@@ -11,17 +11,3 @@
 .breadcrums img{
     height: 12px;
 }
-
-@media(max-width:1024px){
-    .breadcrums{
-        margin: 20px 8%;
-    }
-}
-@media(max-width:800px){
-    .breadcrums{
-        margin: 20px 5%;
-    }
-    .breadcrums img{
-        height: 10px;
-    }
-}

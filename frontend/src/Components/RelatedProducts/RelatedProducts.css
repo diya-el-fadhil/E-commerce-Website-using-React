@@ -26,15 +26,3 @@
     max-width: 1280px;
 }
 
-
-@media(max-width:600px){
-   
-    .relatedproducts h1{
-        font-size: 30px;
-    }
-    .relatedproducts hr{
-        width: 100px;
-        height: 4px;
-        
-    }
-}

@@ -38,36 +38,3 @@
     padding-top: 20px;
 }
 
-/* ----- media query----- */
-
-@media(max-width:1280px){
-    .offers-right img{
-        width: 300px;
-    }
-    .offers-left h1{
-        font-size: 40px;
-    }
-    .offers-left p{
-        font-size: 14px;
-    }
-    .offers-left button{
-        width: 200px;
-        height: 50px;
-        
-        font-size: 18px;
-        margin-top: 25px;
-    }
-}
-@media(max-width:1024px){
-    .offers-right img{
-        width: 200px;
-    }
-}
-@media(max-width:800px){
-    .offers-right{
-        display: none;
-    }
-    .offers{
-        padding: 50px 8%;
-    }
-}
