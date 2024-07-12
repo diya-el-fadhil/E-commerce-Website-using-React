@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  background: #F2C744;
+  padding-bottom: 50px;
+  height: 20px;
+}
+.footer hr {
+  width: 80%;
+  height: 2px;
+  background: #989898;
+  border: none;
+}
+.footer p{
+    color: #1A1A1A;
+    font-size: 16px;
+}
