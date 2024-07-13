@@ -5,7 +5,7 @@ import navprofileIcon from '../Assets/nav-profile.svg'
 const Navbar = () => {
   return (
     <div className='navbar'>
-      <img src={navprofileIcon} className='nav-profile' alt="" />
+      <h2>STORED Admin Pannel</h2>
     </div>
   )
 }
