@@ -21,7 +21,6 @@ const ShopCategory = (props) => {
   return (
     <div className="shopcategory">
       <div className="shopcategory-indexSort">
-        <p><span>Showing 1 - 12</span> out of 54 Products</p>
       </div>
       <div className="shopcategory-products">
         {allproducts.map((item,i) => {
