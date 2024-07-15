@@ -242,3 +242,14 @@ app.listen(port, (error) => {
   if (!error) console.log("Server Running on port " + port);
   else console.log("Error : ", error);
 });
+
+// endpoint for getting user profile data
+app.get('/profile', fetchuser, async (req, res) => {
+  try {
+      const user = await Users.findById(req.user.id).select('-password'); 
+      res.json(user);
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Server Error");
+  }
+});

@@ -6,6 +6,8 @@ import Product from "./Pages/Product";
 import Footer from "./Components/Footer/Footer";
 import ShopCategory from "./Pages/ShopCategory";
 import LoginSignup from "./Pages/LoginSignup";
+import Profile from "./Pages/Profile";
+
 
 export const backend_url = 'http://localhost:4000';
 export const currency = '₹';
@@ -23,6 +25,7 @@ function App() {
             <Route path=':productId' element={<Product />} />
           </Route>
           <Route path="/cart" element={<Cart />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<LoginSignup/>} />
         </Routes>
         <Footer />

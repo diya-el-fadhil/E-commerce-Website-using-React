@@ -1,7 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
-import logo from '../Assets/logo.png'
 import cart_icon from '../Assets/cart_icon.png'
 import { ShopContext } from '../../Context/ShopContext'
 import nav_dropdown from '../Assets/nav_dropdown.png'
@@ -25,9 +24,9 @@ const Navbar = () => {
       </Link>
       <img onClick={dropdown_toggle} className='nav-dropdown' src={nav_dropdown} alt="" />
       <ul ref={menuRef} className="nav-menu">
-        <li onClick={()=>{setMenu("shop")}}><Link to='/' style={{ textDecoration: 'none' }}>Shop</Link>{menu==="shop"?<hr/>:<></>}</li>
-        <li onClick={()=>{setMenu("mens")}}><Link to='/products' style={{ textDecoration: 'none' }}>Products</Link>{menu==="mens"?<hr/>:<></>}</li>
-        <li onClick={()=>{setMenu("womens")}}><Link to='/womens' style={{ textDecoration: 'none' }}>Profile</Link>{menu==="womens"?<hr/>:<></>}</li>
+        <li onClick={()=>{setMenu("shop")}}><Link to='/' style={{ textDecoration: 'none' }}>Shop</Link></li>
+        <li onClick={()=>{setMenu("mens")}}><Link to='/products' style={{ textDecoration: 'none' }}>Products</Link></li>
+        <li onClick={()=>{setMenu("profile")}}><Link to='/profile' style={{ textDecoration: 'none' }}>Profile</Link></li>
       </ul>
       <div className="nav-login-cart">
         {localStorage.getItem('auth-token')
