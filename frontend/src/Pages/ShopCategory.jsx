@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./CSS/ShopCategory.css";
-import dropdown_icon from '../Components/Assets/dropdown_icon.png'
 import Item from "../Components/Item/Item";
 import { Link } from "react-router-dom";
 
