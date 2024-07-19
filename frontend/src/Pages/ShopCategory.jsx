@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./CSS/ShopCategory.css";
+import "./CSS/ShopCategory.css"; 
 import Item from "../Components/Item/Item";
 import { Link } from "react-router-dom";
 

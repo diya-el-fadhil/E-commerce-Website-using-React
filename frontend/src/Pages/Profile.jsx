@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './CSS/Profile.css';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -26,16 +27,16 @@ const Profile = () => {
     }, []);
 
     if (!user) {
-        return <p>Loading...</p>;
+        return <p className="loading">Loading...</p>;
     }
 
     return (
-        <div style={{ padding: '20px' }}>
-            <h1>Profile Page</h1>
-            <div>
+        <div className="profile-container">
+            <h1 className="profile-header">Profile Page</h1>
+            <div className="profile-info">
                 <h2>Personal Information</h2>
-                <p>Name: {user.name}</p>
-                <p>Email: {user.email}</p>
+                <p><strong>Name:</strong> {user.name}</p>
+                <p><strong>Email:</strong> {user.email}</p>
             </div>
         </div>
     );
