@@ -1,0 +1,74 @@
+.user-management {
+    padding: 20px;
+  }
+  
+  .user-management h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .user-management button {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .user-management button:hover {
+    background-color: #0056b3;
+  }
+  
+  .user-management table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-management table th,
+  .user-management table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .user-management table th {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+  
+  .user-management table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .user-management table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .user-management .actions button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .user-management .actions button.edit {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .user-management .actions button.delete {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .user-management .actions button.edit:hover {
+    background-color: #218838;
+  }
+  
+  .user-management .actions button.delete:hover {
+    background-color: #c82333;
+  }
+  
