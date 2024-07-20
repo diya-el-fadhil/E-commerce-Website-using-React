@@ -1,6 +1,6 @@
-import React from 'react';
-import './Sidebar.css';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import './Sidebar.css'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
@@ -15,13 +15,9 @@ const Sidebar = () => {
           <p>Product List</p>
         </div>
       </Link>
-      <Link to='/usermanagement' style={{ textDecoration: 'none' }}>
-        <div className="sidebar-item">
-          <p>User Management</p>
-        </div>
-      </Link>
+      
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
