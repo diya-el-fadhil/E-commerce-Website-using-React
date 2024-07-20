@@ -12,8 +12,6 @@ app.use(cors());
 
 mongoose.connect("mongodb+srv://diyaelfadhilph:diyaelfadhil@cluster0.eksxjnx.mongodb.net/e-commerce");
 
-
-
 //Image Storage Engine 
 const storage = multer.diskStorage({
   destination: './upload/images',
@@ -29,16 +27,14 @@ app.post("/upload", upload.single('product'), (req, res) => {
   })
 })
 
-
 // Route for Images folder
 app.use('/images', express.static('upload/images'));
-
 
 // MiddleWare to fetch user from token
 const fetchuser = async (req, res, next) => {
   const token = req.header("auth-token");
   if (!token) {
-    res.status(401).send({ errors: "Please authenticate using a valid token" });
+    return res.status(401).send({ errors: "Please authenticate using a valid token" });
   }
   try {
     const data = jwt.verify(token, "secret_ecom");
@@ -49,7 +45,6 @@ const fetchuser = async (req, res, next) => {
   }
 };
 
-
 // Schema for creating user model
 const Users = mongoose.model("Users", {
   name: { type: String },
@@ -58,7 +53,6 @@ const Users = mongoose.model("Users", {
   cartData: { type: Object },
   date: { type: Date, default: Date.now() },
 });
-
 
 // Schema for creating Product
 const Product = mongoose.model("Product", {
@@ -73,12 +67,10 @@ const Product = mongoose.model("Product", {
   avilable: { type: Boolean, default: true },
 });
 
-
 // ROOT API Route For Testing
 app.get("/", (req, res) => {
   res.send("Root");
 });
-
 
 // Create an endpoint at ip/login for login the user and giving auth-token
 app.post('/login', async (req, res) => {
@@ -106,7 +98,6 @@ app.post('/login', async (req, res) => {
     return res.status(400).json({ success: success, errors: "please try with correct email/password" })
   }
 })
-
 
 //Create an endpoint at ip/auth for regestring the user & sending auth-token
 app.post('/signup', async (req, res) => {
@@ -138,14 +129,12 @@ app.post('/signup', async (req, res) => {
   res.json({ success, token })
 })
 
-
 // endpoint for getting all products data
 app.get("/allproducts", async (req, res) => {
   let products = await Product.find({});
   console.log("All Products");
   res.send(products);
 });
-
 
 // endpoint for getting latest products data
 app.get("/newcollections", async (req, res) => {
@@ -155,7 +144,6 @@ app.get("/newcollections", async (req, res) => {
   res.send(arr);
 });
 
-
 // endpoint for getting womens products data
 app.get("/popularinwomen", async (req, res) => {
   let products = await Product.find({ category: "women" });
@@ -164,7 +152,7 @@ app.get("/popularinwomen", async (req, res) => {
   res.send(arr);
 });
 
-// endpoint for getting womens products data
+// endpoint for getting related products data
 app.post("/relatedproducts", async (req, res) => {
   console.log("Related Products");
   const {category} = req.body;
@@ -172,7 +160,6 @@ app.post("/relatedproducts", async (req, res) => {
   const arr = products.slice(0, 4);
   res.send(arr);
 });
-
 
 // Create an endpoint for saving the product in cart
 app.post('/addtocart', fetchuser, async (req, res) => {
@@ -182,7 +169,6 @@ app.post('/addtocart', fetchuser, async (req, res) => {
   await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
   res.send("Added")
 })
-
 
 // Create an endpoint for removing the product in cart
 app.post('/removefromcart', fetchuser, async (req, res) => {
@@ -195,15 +181,12 @@ app.post('/removefromcart', fetchuser, async (req, res) => {
   res.send("Removed");
 })
 
-
 // Create an endpoint for getting cartdata of user
 app.post('/getcart', fetchuser, async (req, res) => {
   console.log("Get Cart");
   let userData = await Users.findOne({ _id: req.user.id });
   res.json(userData.cartData);
-
 })
-
 
 // Create an endpoint for adding products using admin panel
 app.post("/addproduct", async (req, res) => {
@@ -229,12 +212,25 @@ app.post("/addproduct", async (req, res) => {
   res.json({ success: true, name: req.body.name })
 });
 
-
 // Create an endpoint for removing products using admin panel
 app.post("/removeproduct", async (req, res) => {
   await Product.findOneAndDelete({ id: req.body.id });
   console.log("Removed");
   res.json({ success: true, name: req.body.name })
+});
+
+// endpoint for getting user profile data
+app.get('/profile', fetchuser, async (req, res) => {
+  try {
+    const user = await Users.findById(req.user.id).select('-password');
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
 });
 
 // Starting Express Server
@@ -243,13 +239,3 @@ app.listen(port, (error) => {
   else console.log("Error : ", error);
 });
 
-// endpoint for getting user profile data
-app.get('/profile', fetchuser, async (req, res) => {
-  try {
-      const user = await Users.findById(req.user.id).select('-password'); 
-      res.json(user);
-  } catch (error) {
-      console.error(error);
-      res.status(500).send("Server Error");
-  }
-});
