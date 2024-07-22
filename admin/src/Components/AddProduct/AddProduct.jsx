@@ -4,7 +4,6 @@ import upload_area from "../Assets/upload_area.svg";
 import { backend_url } from "../../App";
 
 const AddProduct = () => {
-
   const [image, setImage] = useState(false);
   const [productDetails, setProductDetails] = useState({
     name: "",
@@ -16,7 +15,6 @@ const AddProduct = () => {
   });
 
   const AddProduct = async () => {
-
     let dataObj;
     let product = productDetails;
 
@@ -55,31 +53,25 @@ const AddProduct = () => {
   return (
     <div className="addproduct">
       <div className="addproduct-itemfield">
-        <p>Product title</p>
-        <input type="text" name="name" value={productDetails.name} onChange={(e) => { changeHandler(e) }} placeholder="Type here" />
+        <p>Product Title</p>
+        <input type="text" name="name" value={productDetails.name} onChange={(e) => { changeHandler(e) }} placeholder="Type Title here" />
       </div>
       <div className="addproduct-itemfield">
-        <p>Product description</p>
-        <input type="text" name="description" value={productDetails.description} onChange={(e) => { changeHandler(e) }} placeholder="Type here" />
+        <p>Product Description</p>
+        <input type="text" name="description" value={productDetails.description} onChange={(e) => { changeHandler(e) }} placeholder="Type Description here" />
       </div>
       <div className="addproduct-price">
         <div className="addproduct-itemfield">
           <p>Price</p>
-          <input type="number" name="old_price" value={productDetails.old_price} onChange={(e) => { changeHandler(e) }} placeholder="Type here" />
+          <input type="number" name="old_price" value={productDetails.old_price} onChange={(e) => { changeHandler(e) }} placeholder="Type Price here" />
         </div>
         <div className="addproduct-itemfield">
           <p>Offer Price</p>
-          <input type="number" name="new_price" value={productDetails.new_price} onChange={(e) => { changeHandler(e) }} placeholder="Type here" />
+          <input type="number" name="new_price" value={productDetails.new_price} onChange={(e) => { changeHandler(e) }} placeholder="Type Offer Price here" />
         </div>
       </div>
       <div className="addproduct-itemfield">
-        <p>Product category</p>
-        <select value={productDetails.category} name="category" className="add-product-selector" onChange={changeHandler}>
-          <option value="men">Product</option>
-        </select>
-      </div>
-      <div className="addproduct-itemfield">
-        <p>Product image</p>
+        <p>Product Image</p>
         <label htmlFor="file-input">
           <img className="addproduct-thumbnail-img" src={!image ? upload_area : URL.createObjectURL(image)} alt="" />
         </label>
